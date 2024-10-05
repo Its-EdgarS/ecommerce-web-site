@@ -5,7 +5,7 @@ import Purchase from "./components/purchase"
 import PaymentEntry from './components/paymentEntry'
 import ShippingEntry from "./components/shippingEntry"
 import ViewOrder from "./components/viewOrder"
-import Confirmation from './components/confirmation'
+import ViewConfirmation from './components/viewConfirmation'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
             <Route path="/payment" element={<PaymentEntry />} />
             <Route path="/shipping" element={<ShippingEntry />} />
             <Route path="/vieworder" element={<ViewOrder />} />
-            <Route path="/confirmation" element={<Confirmation />} />
+            <Route path="/viewconfirmation" element={<ViewConfirmation />} />
           </Routes>
         </div>
       </Router>
