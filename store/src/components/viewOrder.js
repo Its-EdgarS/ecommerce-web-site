@@ -18,6 +18,22 @@ const ViewOrder = () => {
         <div>
             <h1>View Order</h1>
             <div>
+                <h2>Item 1</h2>
+                <p>order.buyQuantity[0]</p>
+
+                <h2>Item 2</h2>
+                <p>order.buyQuantity[1]</p>
+
+                <h2>Item 3</h2>
+                <p>order.buyQuantity[2]</p>
+
+                <h2>Item 4</h2>
+                <p>order.buyQuantity[3]</p>
+
+                <h2>Item 5</h2>
+                <p>order.buyQuantity[4]</p>
+            </div>
+            <div>
                 <h2>Card Number</h2>
                 <p>order.credit_card_number</p>
 
