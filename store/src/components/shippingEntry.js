@@ -12,7 +12,7 @@ const PaymentEntry = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        navigate('/viewConfirmation', {state: {order}})
+        navigate('/viewOrder', {state: {order}})
     }
 
     const handleInputChange = (e) => {
