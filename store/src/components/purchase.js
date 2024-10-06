@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import ShoppingCart from './shoppingCart';
 
 const Purchase = () => {
     // hard coded the order object
@@ -9,6 +10,7 @@ const Purchase = () => {
         card_holder_name: '', address1: '', address2: '', city: '', state: '', zip: '', productImages: ['/product1.avif', '/product2.webp', '/product3.webp', '/product4.jpeg', '/product5.webp'], productPrices: [10.99, 20.99, 30.99, 40.99, 50.99]
     })
     const navigate = useNavigate()
+    const [cart, setCart] = useState([]);
 
     // runs when pay button is clicked
     // trasnfers the order object to the payment page
@@ -22,7 +24,52 @@ const Purchase = () => {
         const newBuyQuantity = {...order.buyQuantity} // get copy of the buyQuantity array
         newBuyQuantity[index] = value
         setOrder({...order, buyQuantity: newBuyQuantity}) // update the order
+
+        // Update the cart if the item is already in the cart
+        const newCart = [...cart];
+        const existingItemIndex = newCart.findIndex(item => item.index === index);
+        if (existingItemIndex !== -1) {
+            newCart[existingItemIndex].quantity = parseInt(value, 10);
+            setCart(newCart);
+        }
     }
+
+    const addToCart = (index) => {
+        const newCart = [...cart];
+        const existingItemIndex = newCart.findIndex(item => item.index === index);
+        if (existingItemIndex !== -1) {
+            newCart[existingItemIndex].quantity += order.buyQuantity[index];
+        } else {
+            newCart.push({
+                index,
+                image: order.productImages[index],
+                price: order.productPrices[index],
+                quantity: order.buyQuantity[index]
+            });
+        }
+        setCart(newCart);
+    };
+
+    const updateQuantity = (index, quantity) => {
+        const newCart = [...cart];
+        newCart[index].quantity = quantity;
+        setCart(newCart);
+
+        // Update the order buyQuantity
+        const newBuyQuantity = {...order.buyQuantity};
+        newBuyQuantity[cart[index].index] = quantity;
+        setOrder({ ...order, buyQuantity: newBuyQuantity });
+    };
+
+    const removeItem = (index) => {
+        const newCart = cart.filter((_, i) => i !== index);
+        setCart(newCart);
+
+        // Update the order buyQuantity
+        const newBuyQuantity = {...order.buyQuantity};
+        newBuyQuantity[cart[index].index] = 0; // reset the quantity to 0
+        setOrder({ ...order, buyQuantity: newBuyQuantity });
+    };
 
     return (
         <div> 
@@ -34,12 +81,13 @@ const Purchase = () => {
                         <img src={image} alt={`Product ${index + 1}`} width="100" />
                         <input
                             type='number'
-                            required
                             onChange={(e) => handleInputChange(index, e.target.value)}
                         />
+                        <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
                         <br />
                     </div>
                 ))}
+                <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
                 <button className='btn'>Pay</button>
             </form>
         </div>

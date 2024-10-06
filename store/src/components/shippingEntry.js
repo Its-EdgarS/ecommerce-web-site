@@ -12,7 +12,7 @@ const PaymentEntry = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        navigate('/viewConfirmation', {state: {order}})
+        navigate('/viewOrder', {state: {order}})
     }
 
     const handleInputChange = (e) => {
@@ -64,7 +64,7 @@ const PaymentEntry = () => {
                         onChange={(e) => handleInputChange(e)}
                     />
                 <br/>
-                <button className='btn'>View Confirmation</button>
+                <button className='btn'>View Order</button>
                 </form>
             </div>
         </div>
