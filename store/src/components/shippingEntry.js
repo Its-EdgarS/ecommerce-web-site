@@ -64,7 +64,7 @@ const PaymentEntry = () => {
                         onChange={(e) => handleInputChange(e)}
                     />
                 <br/>
-                <button className='btn'>View Confirmation</button>
+                <button className='btn'>View Order</button>
                 </form>
             </div>
         </div>
