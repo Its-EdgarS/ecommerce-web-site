@@ -14,6 +14,14 @@ const ViewOrder = () => {
         navigate('/viewConfirmation', {state: {order}})
     }
 
+    const total_cost = () => {
+        let total = 0;
+        for(let i = 0; i < 5; i++){
+            total += order.buyQuantity[i] * order.productPrices[i];
+        }
+        return total
+    }
+
     return(
         <div>
             <h1>View Order</h1>
@@ -32,6 +40,9 @@ const ViewOrder = () => {
 
                 <h2>Item 5</h2>
                 <p>{order?.buyQuantity[4]}</p>
+
+                <h2>Total Cost</h2>
+                <p>{total_cost()}</p>
             </div>
             <div>
                 <h2>Card Number</h2>
