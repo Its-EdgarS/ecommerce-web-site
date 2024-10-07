@@ -19,7 +19,7 @@ const ViewOrder = () => {
         for(let i = 0; i < 5; i++){
             total += order.buyQuantity[i] * order.productPrices[i];
         }
-        return total
+        return Math.round(total * 100) / 100;
     }
 
     return(
