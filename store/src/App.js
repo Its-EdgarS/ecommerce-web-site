@@ -6,6 +6,7 @@ import PaymentEntry from './components/paymentEntry'
 import ShippingEntry from "./components/shippingEntry"
 import ViewOrder from "./components/viewOrder"
 import ViewConfirmation from './components/viewConfirmation'
+import ContactUs from './components/contactUs'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/shipping" element={<ShippingEntry />} />
             <Route path="/vieworder" element={<ViewOrder />} />
             <Route path="/viewconfirmation" element={<ViewConfirmation />} />
+            <Route path="/contact" element={<ContactUs />} />
           </Routes>
         </div>
       </Router>
