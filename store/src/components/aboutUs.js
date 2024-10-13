@@ -50,7 +50,7 @@ const AboutUs = () => {
                 </div>
                 <div>
                     <h3>Abril Diaz</h3>
-                    <img src="" alt="Abril Diaz" width="100" />
+                    <img src="../../Team_Photos/IMG_7218.JPG" alt="Abril Diaz" width="100" />
                     <div>
                         <h4>Position:</h4>
                         <p>Senior Programmer</p>
@@ -62,7 +62,7 @@ const AboutUs = () => {
                 </div>
                 <div>
                     <h3>Kyle Duff</h3>
-                    <img src="" alt="Kyle Duff" width="100" />
+                    <img src="../../Team_Photos/Kyle.JPG" alt="Kyle Duff" width="100" />
                     <div>
                         <h4>Position:</h4>
                         <p>Senior Programmer</p>
