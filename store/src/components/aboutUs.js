@@ -38,14 +38,14 @@ const AboutUs = () => {
                 <h2>Executives</h2>
                 <div>
                     <h3>Edgar Sanchez</h3>
-                    <img src="" alt="Edgar Snachez" width="100" />
+                    <img src="../../Team_Photos/Edgar.JPG" alt="Edgar Snachez" width="100" />
                     <div>
                         <h4>Position:</h4>
                         <p>Senior Programmer</p>
                         <h4>Education:</h4>
                         <p>Ohio State University</p>
                         <h4>Experience:</h4>
-                        <p></p>
+                        <p>With previous work experience as a Technology Architecture Analyst at Accenture and a Software Development Engineer at Amazon, Edgar Sanchez is the right engineer to bring our mission to life. </p>
                     </div>
                 </div>
                 <div>
