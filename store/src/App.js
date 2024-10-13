@@ -22,6 +22,8 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/purchase" element={<Purchase />} />
             <Route path="/payment" element={<PaymentEntry />} />
+            <Route path="/viewOrder" element={<ViewOrder />} />
+            <Route path="/viewConfirmation" element={<ViewConfirmation />} />
             <Route path="/shipping" element={<ShippingEntry />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/aboutUs" element={<AboutUs />} />
