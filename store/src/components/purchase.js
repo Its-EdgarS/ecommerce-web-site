@@ -2,6 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import ShoppingCart from './shoppingCart';
+import '../stylesheets/footer.css';
 
 const Purchase = () => {
     // hard coded the order object
@@ -90,6 +91,30 @@ const Purchase = () => {
                 <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
                 <button className='btn'>Pay</button>
             </form>
+
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h4>Purchase Products</h4>
+                        <ul>
+                            <li><a href="#">Purchase</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
         </div>
     
     )
