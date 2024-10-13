@@ -8,6 +8,8 @@ import ViewOrder from "./components/viewOrder"
 import ViewConfirmation from './components/viewConfirmation'
 import Home from './components/home'
 import Menu from './components/menu'
+import ContactUs from './components/contactUs'
+import AboutUs from './components/aboutUs'
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/purchase" element={<Purchase />} />
             <Route path="/payment" element={<PaymentEntry />} />
             <Route path="/shipping" element={<ShippingEntry />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
           </Routes>
         </div>
       </Router>
@@ -29,5 +33,3 @@ function App() {
 }
 
 export default App;
-            <Route path="/vieworder" element={<ViewOrder />} />
-            <Route path="/viewconfirmation" element={<ViewConfirmation />} />
