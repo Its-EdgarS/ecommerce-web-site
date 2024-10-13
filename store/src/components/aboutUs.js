@@ -3,6 +3,8 @@ import {useState} from 'react';
 import {useLocation} from "react-router-dom"
 import { useNavigate } from 'react-router-dom';
 import '../stylesheets/footer.css';
+import '../stylesheets/aboutUs.css';
+
 
 const AboutUs = () => {
     const location = useLocation();
@@ -11,7 +13,7 @@ const AboutUs = () => {
 
     return (
         
-        <div>
+        <div className='aboutUs-container'>
             <h1>About Our Company</h1>
             <div>
                 <h2>Mission Statement</h2>
@@ -36,27 +38,42 @@ const AboutUs = () => {
                 <h2>Executives</h2>
                 <div>
                     <h3>Edgar Sanchez</h3>
-                    <p>
-                        Position: Senior Programmer
-                        Education: Ohio State University
-                        Experience:
-                    </p>
+                    <img src="" alt="Edgar Snachez" width="100" />
+                    <div>
+                        <h4>Position:</h4>
+                        <p>Senior Programmer</p>
+                        <h4>Education:</h4>
+                        <p>Ohio State University</p>
+                        <h4>Experience:</h4>
+                        <p></p>
+                    </div>
                 </div>
                 <div>
                     <h3>Abril Diaz</h3>
-                    <p>
-                        Position: Senior Programmer
-                        Education: Ohio State University
-                        Experience:
-                    </p>
+                    <img src="" alt="Abril Diaz" width="100" />
+                    <div>
+                        <h4>Position:</h4>
+                        <p>Senior Programmer</p>
+                        <h4>Education:</h4>
+                        <p>Ohio State University</p>
+                        <h4>Experience:</h4>
+                        <p></p>
+                    </div>
                 </div>
                 <div>
                     <h3>Kyle Duff</h3>
-                    <p>
-                        Position: Senior Programmer
-                        Education: Ohio State University
-                        Experience: 
-                    </p>
+                    <img src="" alt="Kyle Duff" width="100" />
+                    <div>
+                        <h4>Position:</h4>
+                        <p>Senior Programmer</p>
+                        <h4>Education:</h4>
+                        <p>Ohio State University</p>
+                        <h4>Experience:</h4>
+                        <p>
+                            Worked as a programmer in two separate startups where he gained valuable skills and experience used within
+                            our company.
+                        </p>
+                    </div>
                 </div>
             </div>
             <footer>

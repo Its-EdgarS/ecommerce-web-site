@@ -1,0 +1,12 @@
+.aboutUs-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.aboutUs-container p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    margin: 20px; 
+}
