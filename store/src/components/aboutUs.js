@@ -71,7 +71,9 @@ const AboutUs = () => {
                         <h4>Experience:</h4>
                         <p>
                             Worked as a programmer in two separate startups where he gained valuable skills and experience used within
-                            our company.
+                            our company. Kyle has experience in many areas of software development as he currently has a large role
+                            ont he software devlopment team in the starup Ubihere. He continues his studies towards is bachelors degree
+                            in Computer Science and his minor in Robotics and Autonomous systems.
                         </p>
                     </div>
                 </div>
