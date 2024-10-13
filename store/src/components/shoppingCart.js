@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useState } from "react"
+import {useLocation} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 
 const ShoppingCart = ({cart, updateQuantity, removeItem}) => {
+    const location = useLocation()
+    const navigate = useNavigate()
+    const [order, setOrder] = useState(location.state?.order)
+
     return (
         <div>
             <h2>Shopping Cart</h2>

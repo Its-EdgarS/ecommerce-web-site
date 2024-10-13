@@ -1,7 +1,15 @@
 import React from 'react';
+import {useState} from 'react';
+import {useLocation} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
+import '../stylesheets/footer.css';
 
-const ContactUs = () => {
-    return(
+const AboutUs = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const [order, setOrder] = useState(location.state?.order);
+
+    return (
         
         <div>
             <h1>About Our Company</h1>
@@ -10,7 +18,7 @@ const ContactUs = () => {
                 <p>
                     Our mission is to bring the highest quality of Ohio State apparel to their fans. As Ohio state alumni outselves,
                     we know what it's like to be a fan or current student at Ohio State and want to show your pride. We want to provide
-                    those lookjing to show Ohio State pride with the high qualtiy material they deserve so they can keep rocking the 
+                    those looking to show Ohio State pride with the high qualtiy material they deserve so they can keep rocking the 
                     Scarlet and Gold. We live to make apparel and want to give our customer the highest quality of service.
 
                 </p>
@@ -29,7 +37,7 @@ const ContactUs = () => {
                 <div>
                     <h3>Edgar Sanchez</h3>
                     <p>
-                        Position:
+                        Position: Senior Programmer
                         Education: Ohio State University
                         Experience:
                     </p>
@@ -37,7 +45,7 @@ const ContactUs = () => {
                 <div>
                     <h3>Abril Diaz</h3>
                     <p>
-                        Position:
+                        Position: Senior Programmer
                         Education: Ohio State University
                         Experience:
                     </p>
@@ -45,14 +53,36 @@ const ContactUs = () => {
                 <div>
                     <h3>Kyle Duff</h3>
                     <p>
-                        Position:
+                        Position: Senior Programmer
                         Education: Ohio State University
-                        Experience:
+                        Experience: 
                     </p>
                 </div>
             </div>
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h4>Purchase Products</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/purchase', { state: { order } })}>Purchase</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/aboutUs', { state: { order } })}>About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/contactUs', { state: { order } })}>Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }
 
-export default ContactUs;
+export default AboutUs;

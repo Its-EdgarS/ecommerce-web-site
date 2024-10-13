@@ -1,11 +1,14 @@
 import React, { useState } from "react"
 import {useLocation} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import '../stylesheets/viewConfirmation.css'
+import '../stylesheets/footer.css';
 
 
 const ViewConfirmation = () => {
 
     const location = useLocation()
+    const navigate = useNavigate()
 
 
     const [order, setOrder] = useState(location.state?.order)
@@ -35,6 +38,28 @@ const ViewConfirmation = () => {
                     </div>
                 ))}
             </div>
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h4>Purchase Products</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/purchase', { state: { order } })}>Purchase</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/aboutUs', { state: { order } })}>About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/contactUs', { state: { order } })}>Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
         </div>
     )
 }

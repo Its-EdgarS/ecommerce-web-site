@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from "react"
+import {useLocation} from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import '../stylesheets/contactUs.css';
+import '../stylesheets/footer.css';
 
 const ContactUs = () => {
+    const location = useLocation()
+    const navigate = useNavigate()
+    const [order, setOrder] = useState(location.state?.order)
+
     return (
         <div className="contact-us-container">
             <h1>Contact Us</h1>
@@ -45,6 +52,28 @@ const ContactUs = () => {
                 </label>
                 <button type="submit">Submit</button>
             </form>
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-column">
+                        <h4>Purchase Products</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/purchase', { state: { order } })}>Purchase</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>About Us</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/aboutUs', { state: { order } })}>About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Contact Us</h4>
+                        <ul>
+                            <li><a onClick={() => navigate('/contactUs', { state: { order } })}>Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 };

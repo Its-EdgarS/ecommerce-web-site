@@ -7,6 +7,7 @@ import ShippingEntry from "./components/shippingEntry"
 import ViewOrder from "./components/viewOrder"
 import ViewConfirmation from './components/viewConfirmation'
 import ContactUs from './components/contactUs'
+import AboutUs from './components/aboutUs'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/vieworder" element={<ViewOrder />} />
             <Route path="/viewconfirmation" element={<ViewConfirmation />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/aboutUs" element={<AboutUs />} />
           </Routes>
         </div>
       </Router>

@@ -73,6 +73,7 @@ const Purchase = () => {
     };
 
     return (
+        
         <div> 
             <h2>Enter the quantity of products you want to buy</h2>
             <form onSubmit={handleSubmit}>
@@ -97,19 +98,19 @@ const Purchase = () => {
                     <div class="footer-column">
                         <h4>Purchase Products</h4>
                         <ul>
-                            <li><a href="#">Purchase</a></li>
+                            <li><a onClick={() => navigate('/purchase', { state: { order } })}>Purchase</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h4>About Us</h4>
                         <ul>
-                            <li><a href="#">About</a></li>
+                            <li><a onClick={() => navigate('/aboutUs', { state: { order } })}>About</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h4>Contact Us</h4>
                         <ul>
-                            <li><a href="#">Contact</a></li>
+                            <li><a onClick={() => navigate('/contactUs', { state: { order } })}>Contact</a></li>
                         </ul>
                     </div>
                 </div>
