@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import {useLocation} from "react-router-dom"
 import { useNavigate } from 'react-router-dom';
+import '../stylesheets/viewOrder.css';
 
 const ViewOrder = () => {
 
@@ -25,26 +26,41 @@ const ViewOrder = () => {
     return(
         <div>
             <h1>View Order</h1>
-            <div>
-                <h2>Item 1</h2>
-                <p>{order?.buyQuantity[0]}</p>
+            <h3>Items</h3>
+            <div class="item-container">
+                <div class="item">
+                    <h2>Item 1</h2>
+                    <p>{order?.buyQuantity[0]}</p>
+                </div>
 
-                <h2>Item 2</h2>
-                <p>{order?.buyQuantity[1]}</p>
+                <div class="item">
+                    <h2>Item 2</h2>
+                    <p>{order?.buyQuantity[1]}</p>
+                </div>
 
-                <h2>Item 3</h2>
-                <p>{order?.buyQuantity[2]}</p>
+                <div class="item">
+                    <h2>Item 3</h2>
+                    <p>{order?.buyQuantity[2]}</p>
+                </div>
 
-                <h2>Item 4</h2>
-                <p>{order?.buyQuantity[3]}</p>
+                <div class="item">
+                    <h2>Item 4</h2>
+                    <p>{order?.buyQuantity[3]}</p>
+                </div>
 
-                <h2>Item 5</h2>
-                <p>{order?.buyQuantity[4]}</p>
+                <div class="item">
+                    <h2>Item 5</h2>
+                    <p>{order?.buyQuantity[4]}</p>
+                </div>
+            </div>
 
+            <div class="cost-container">
                 <h2>Total Cost</h2>
                 <p>{total_cost()}</p>
             </div>
-            <div>
+
+            <h3>Card</h3>
+            <div class="card-container">
                 <h2>Card Number</h2>
                 <p>{order?.credit_card_number}</p>
 
@@ -57,7 +73,9 @@ const ViewOrder = () => {
                 <h2>Card Holder</h2>
                 <p>{order?.card_holder_name}</p>
             </div>
-            <div>
+
+            <h3>Address</h3>
+            <div class="address-container">
                 <h2>Address 1</h2>
                 <p>{order?.address1}</p>
 
