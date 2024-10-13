@@ -76,7 +76,7 @@ const PaymentEntry = () => {
                     <div class="footer-column">
                         <h4>Contact Us</h4>
                         <ul>
-                            <li><a onClick={() => navigate('/contactUs', { state: { order } })}>Contact</a></li>
+                            <li><a onClick={() => navigate('/contact', { state: { order } })}>Contact</a></li>
                         </ul>
                     </div>
                 </div>
