@@ -1,6 +1,7 @@
 import React from 'react';
 import './stylesheets/App.css';
 import { BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Purchase from "./components/purchase"
 import PaymentEntry from './components/paymentEntry'
 import ShippingEntry from "./components/shippingEntry"

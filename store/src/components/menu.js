@@ -1,17 +1,42 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import '../stylesheets/index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Menu() {
     return (
-        <nav>
-            <ul>
-                <li><Link to="/home">Home</Link></li>
-                <li><Link to="/purchase">Purchase</Link></li>
-                <li><Link to="/payment">Payment</Link></li>
-                <li><Link to="/shipping">Shipping</Link></li>
-                <li><Link to="/vieworder">View Order</Link></li>
-                <li><Link to="/viewconfirmation">View Confirmation</Link></li>
-            </ul>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <Link className="navbar-brand d-flex align-items-center p-2 " to="/home">
+                <img src="/navbar_images/store_logo.png" alt="Logo" width="30" height="30" className="d-inline-block align-top mr-2" />
+                Buckeye Central
+            </Link>
+
+            <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul className="navbar-nav fs-4">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/purchase">Purchase</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/jerseys">Jerseys</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/accessories">Accessories</Link>
+                    </li>
+                </ul>
+            </div>
+
+            <div className="d-flex align-items-center">
+                <Link to="/search" className="nav-link p-2">
+                    <img src="/navbar_images/search_icon.png" alt="Search" width="24" height="24" />
+                </Link>
+                <Link to="/account" className="nav-link p-2">
+                    <img src="/navbar_images/account_icon.png" alt="Account" width="24" height="24" />
+                </Link>
+                <Link to="/cart" className="nav-link p-2">
+                    <img src="/navbar_images/shoppingcart_icon.png" alt="Cart" width="24" height="24" />
+                </Link>
+            </div>
+
         </nav>
     )
 }
