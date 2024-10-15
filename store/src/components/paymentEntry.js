@@ -24,41 +24,43 @@ const PaymentEntry = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Credit Card Number</label>
-                <input 
-                    type='text'
-                    name='credit_card_number'
-                    required
-                    onChange={(e) => handleInputChange(e)}
-                /> 
-                <br/>
-                <label>Expiration Date</label>
-                <input 
-                    type='date'
-                    name='expir_date'
-                    required
-                    onChange={(e) => handleInputChange(e)}
-                />
-                <br/>
-                <label>CVV Code</label>
-                <input 
-                    type='number'
-                    name='cvvCode'
-                    required
-                    onChange={(e) => handleInputChange(e)}
-                />
-                <br/>
-                <label>Card Holder Name</label>
-                <input 
-                    type='text'
-                    name='card_holder_name'
-                    required
-                    onChange={(e) => handleInputChange(e)}
-                />
-                <br/>
-                <button className='btn'>Next</button>
-            </form>
+            <div className="d-flex justify-content-center align-items-center vh-100">
+                <form onSubmit={handleSubmit}>
+                    <label>Credit Card Number</label>
+                    <input 
+                        type='text'
+                        name='credit_card_number'
+                        required
+                        onChange={(e) => handleInputChange(e)}
+                    /> 
+                    <br/>
+                    <label>Expiration Date</label>
+                    <input 
+                        type='date'
+                        name='expir_date'
+                        required
+                        onChange={(e) => handleInputChange(e)}
+                    />
+                    <br/>
+                    <label>CVV Code</label>
+                    <input 
+                        type='number'
+                        name='cvvCode'
+                        required
+                        onChange={(e) => handleInputChange(e)}
+                    />
+                    <br/>
+                    <label>Card Holder Name</label>
+                    <input 
+                        type='text'
+                        name='card_holder_name'
+                        required
+                        onChange={(e) => handleInputChange(e)}
+                    />
+                    <br/>
+                    <button className='btn'>Next</button>
+                </form>
+            </div>
             <footer>
                 <div class="footer-container">
                     <div class="footer-column">

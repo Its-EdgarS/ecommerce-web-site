@@ -1,0 +1,20 @@
+.custom-brand {
+    margin-left: 0rem; 
+  }
+  
+  .outline {
+    outline: 2px solid red;
+  }
+  
+  .container-fluid {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .home-banner {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any inline spacing */
+  }
