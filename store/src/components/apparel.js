@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ShoppingCart from './shoppingCart';
 import '../stylesheets/footer.css';
 
-const Purchase = () => {
+const Apparel = () => {
     // hard coded the order object
     const [order, setOrder] = useState({
         buyQuantity: [0, 0, 0, 0, 0], credit_card_number: '', expir_date: '', cvvCode: '',
@@ -121,4 +121,4 @@ const Purchase = () => {
     )
 }
 
-export default Purchase;
+export default Apparel;

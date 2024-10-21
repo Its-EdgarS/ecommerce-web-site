@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import '../stylesheets/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Menu() {
@@ -10,11 +9,10 @@ function Menu() {
                 <img src="/navbar_images/store_logo.png" alt="Logo" width="30" height="30" className="d-inline-block align-top mr-2" />
                 Buckeye Central
             </Link>
-
             <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul className="navbar-nav fs-4">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/purchase">Purchase</Link>
+                        <Link className="nav-link" to="/apparel">Apparel</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/jerseys">Jerseys</Link>

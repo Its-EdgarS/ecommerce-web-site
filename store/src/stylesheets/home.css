@@ -1,20 +1,81 @@
-.custom-brand {
-    margin-left: 0rem; 
-  }
-  
-  .outline {
-    outline: 2px solid red;
-  }
-  
-  .container-fluid {
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .home-banner {
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove any inline spacing */
-  }
+.home-banner {
+  position: relative;
+  background-image: url('../../public/home/image2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  text-shadow: 0 0 4rem black;
+}
+
+.home-text {
+  color: rgb(255, 255, 255);
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.featured-jerseys-wrapper {
+  display: flex;
+  background-color: rgb(14, 14, 14);
+  box-shadow: 0 0px 40px 50px inset rgba(0, 0, 0, 0.5); 
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-jerseys-desc {
+  width: 15%;
+  color: white;
+}
+
+.featured-jerseys-desc > h3 {
+  color: white;
+}
+
+.f-j-btn {
+  background-color: red;
+  border-color: red;
+}
+
+.f-j-btn:hover {
+  background-color: darkred; 
+  border-color: darkred;
+}
+
+.featured-jerseys-products {
+  display: flex;
+  gap: 1rem;
+}
+
+.product-card {
+  width: 200px;
+  margin: 10px;
+}
+
+.featured-jerseys-product-desc {
+  border-top: 2px solid rgb(100, 100, 100);
+  font-weight: bold;
+}
+
+.shop-men-women-wrapper {
+  background-image: url('../../public/home/buckeye_plant_bg.png');
+
+}
+
+.shop-men-women-promo {
+  height: 40rem;
+  margin: 1rem;
+}

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -21,4 +25,12 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.outline {
+  outline: 2px solid red;
+}
+
+.outline2 {
+  outline: 2px solid blue;
 }
