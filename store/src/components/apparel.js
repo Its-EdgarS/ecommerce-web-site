@@ -17,7 +17,7 @@ const Apparel = () => {
     // trasnfers the order object to the payment page
     const handleSubmit = (e) => {
         e.preventDefault()
-        navigate('/payment', { state: { order } })
+        navigate('/checkout', { state: { order } })
     }
 
     // runs when the user enters a quantity
@@ -92,30 +92,6 @@ const Apparel = () => {
                 <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
                 <button className='btn'>Pay</button>
             </form>
-
-            <footer>
-                <div class="footer-container">
-                    <div class="footer-column">
-                        <h4>Purchase Products</h4>
-                        <ul>
-                            <li><a onClick={() => navigate('/purchase', { state: { order } })}>Purchase</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>About Us</h4>
-                        <ul>
-                            <li><a onClick={() => navigate('/aboutUs', { state: { order } })}>About</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Contact Us</h4>
-                        <ul>
-                            <li><a onClick={() => navigate('/contact', { state: { order } })}>Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
-
         </div>
     
     )

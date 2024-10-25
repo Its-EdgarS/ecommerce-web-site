@@ -14,6 +14,8 @@ import ContactUs from './components/contactUs'
 import AboutUs from './components/aboutUs'
 import Men from './components/men'
 import Women from './components/women'
+import Checkout from './components/checkout'
+import Footer from './components/footer'
 
 function App() {
   return (
@@ -25,16 +27,18 @@ function App() {
             <Route path="/" element={<Navigate to="/home" />} /> 
             <Route path="/home" element={<Home />} />
             <Route path="/apparel" element={<Apparel />} />
-            <Route path="/payment" element={<PaymentEntry />} />
+            {/* <Route path="/payment" element={<PaymentEntry />} /> */}
             <Route path="/viewOrder" element={<ViewOrder />} />
             <Route path="/viewConfirmation" element={<ViewConfirmation />} />
-            <Route path="/shipping" element={<ShippingEntry />} />
+            {/* <Route path="/shipping" element={<ShippingEntry />} /> */}
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/aboutUs" element={<AboutUs />} />
             <Route path="/men" element={<Men />} />
             <Route path="/women" element={<Women />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </div>
   );
