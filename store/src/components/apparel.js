@@ -2,7 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import ShoppingCart from './shoppingCart';
-import '../stylesheets/footer.css';
+import '../stylesheets/apparel.css';
 
 const Apparel = () => {
     // hard coded the order object
@@ -75,23 +75,30 @@ const Apparel = () => {
     return (
         
         <div> 
-            <h2>Enter the quantity of products you want to buy</h2>
-            <form onSubmit={handleSubmit}>
-                {order.productImages.map((image, index) => (
-                    <div key={index}>
-                        <label>Product {index + 1} - ${order.productPrices[index]}</label>
-                        <img src={image} alt={`Product ${index + 1}`} width="100" />
-                        <input
-                            type='number'
-                            onChange={(e) => handleInputChange(index, e.target.value)}
-                        />
-                        <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
-                        <br />
+            <div className='apparel-banner'>
+                <h2>All Apparel</h2>
+                <p>Enter the quantity of products you want to buy</p>
+            </div>
+            <div className='apparel-container'>
+                <form onSubmit={handleSubmit}>
+                    <div className='product-grid'>
+                        {order.productImages.map((image, index) => (
+                            <div className='product-item' key={index}>
+                                <label>Product {index + 1} - ${order.productPrices[index]}</label>
+                                <img src={image} alt={`Product ${index + 1}`} width="100" />
+                                <input
+                                    type='number'
+                                    onChange={(e) => handleInputChange(index, e.target.value)}
+                                />
+                                <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
+                                <br />
+                            </div>
+                        ))}
                     </div>
-                ))}
-                <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
-                <button className='btn'>Pay</button>
-            </form>
+                    <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
+                    <button className='cart-btn'>Checkout</button>
+                </form>
+            </div>
         </div>
     
     )

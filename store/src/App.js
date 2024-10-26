@@ -14,6 +14,7 @@ import Men from './components/men'
 import Women from './components/women'
 import Checkout from './components/checkout'
 import Footer from './components/footer'
+import ShoppingCart from './components/shoppingCart'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="/men" element={<Men />} />
             <Route path="/women" element={<Women />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/cart" element={<ShoppingCart />} />
           </Routes>
         </div>
         <Footer />

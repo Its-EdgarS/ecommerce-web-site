@@ -1,6 +1,12 @@
+.checkout {
+  background-image: url('../../public/osu_background_small.webp');
+  background-color: white;
+  padding: 10px;
+}
+
 .checkout-container {
   max-width: 800px;
-  margin: 20px auto;
+  margin: auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -58,19 +64,18 @@
 }
 
 .checkout-btn {
-  display: inline-block;
-  padding: 12px 24px;
-  background-color: #0070f3;
-  color: #fff;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: rgb(215, 46, 46);
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500;
+  width: 100%;
 }
 
 .checkout-btn:hover {
-  background-color: #005bb5;
+  background-color: #7f1111;
 }
 
 @media (max-width: 768px) {

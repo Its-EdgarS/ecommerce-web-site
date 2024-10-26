@@ -1,16 +1,16 @@
-.view-confirmation-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
+.view-confirmation {
+  background-image: url('../../public/osu_background_small.webp');
+  background-color: white;
+  padding: 10px;
 }
 
-.view-confirmation-container h1 {
-  color: #333;
-  margin-bottom: 20px;
+.view-confirmation-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .view-confirmation-container h2 {
@@ -39,6 +39,8 @@
   width: 80px;
   height: auto;
   margin-right: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .order-item-details {
