@@ -1,6 +1,8 @@
 footer {
     background-color: #ba0c2f;
     color: #a7b1b7;
+    padding: 10px 0;
+    height: 62px;
 }
 
 .footer-container {
@@ -12,12 +14,6 @@ footer {
 .footer-column {
     flex: 1; 
     min-width: 200px; 
-    margin: 10px; 
-}
-
-footer ul {
-    list-style-type: none; 
-    padding: 0; 
 }
 
 footer a {
@@ -25,6 +21,12 @@ footer a {
     text-decoration: none; 
 }
 
-footer a:hover {
-    text-decoration: underline;
+.footer-text {
+    color: #a7b1b7;
+    font-size: 1.5em; 
+    
+}
+
+.footer-text:hover {
+    color: lightgray;
 }

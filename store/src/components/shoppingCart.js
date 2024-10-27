@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 const ShoppingCart = ({cart, updateQuantity, removeItem}) => {
     const location = useLocation()
-    const navigate = useNavigate()
-    const [order, setOrder] = useState(location.state?.order)
 
     return (
         <div>
@@ -22,7 +20,7 @@ const ShoppingCart = ({cart, updateQuantity, removeItem}) => {
                             value={item.quantity}
                             onChange={(e) => updateQuantity(index, e.target.value)}
                         />
-                        <button type='button' onClick={() => removeItem(index)}>Remove</button>
+                        <button className='cart-btn' type='button' onClick={() => removeItem(index)}>Remove</button>
                     </div>
                 ))
             )}

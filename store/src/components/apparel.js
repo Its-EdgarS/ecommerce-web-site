@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import ShoppingCart from './shoppingCart';
-import '../stylesheets/footer.css';
+import '../stylesheets/apparel.css';
 
 const Apparel = () => {
     // hard coded the order object
@@ -47,7 +47,7 @@ const Apparel = () => {
     // trasnfers the order object to the payment page
     const handleSubmit = (e) => {
         e.preventDefault()
-        navigate('/payment', { state: { order } })
+        navigate('/checkout', { state: { order } })
     }
 
     // runs when the user enters a quantity
@@ -105,47 +105,30 @@ const Apparel = () => {
     return (
         
         <div> 
-            <h2>Enter the quantity of products you want to buy</h2>
-            <form onSubmit={handleSubmit}>
-                {order.productImages.map((image, index) => (
-                    <div key={index}>
-                        <label>Product {index + 1} - ${order.productPrices[index]}</label>
-                        <img src={image} alt={`Product ${index + 1}`} width="100" />
-                        <input
-                            type='number'
-                            onChange={(e) => handleInputChange(index, e.target.value)}
-                        />
-                        <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
-                        <br />
+            <div className='apparel-banner'>
+                <h2>All Apparel</h2>
+                <p>Enter the quantity of products you want to buy</p>
+            </div>
+            <div className='apparel-container'>
+                <form onSubmit={handleSubmit}>
+                    <div className='product-grid'>
+                        {order.productImages.map((image, index) => (
+                            <div className='product-item' key={index}>
+                                <label>Product {index + 1} - ${order.productPrices[index]}</label>
+                                <img src={image} alt={`Product ${index + 1}`} width="100" />
+                                <input
+                                    type='number'
+                                    onChange={(e) => handleInputChange(index, e.target.value)}
+                                />
+                                <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
+                                <br />
+                            </div>
+                        ))}
                     </div>
-                ))} 
-                <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
-                <button className='btn'>Pay</button>
-            </form>
-
-            <footer>
-                <div className="footer-container">
-                    <div className="footer-column">
-                        <h4>Purchase Products</h4>
-                        <ul>
-                            <li><a onClick={() => navigate('/purchase', { state: { order } })}>Purchase</a></li>
-                        </ul>
-                    </div>
-                    <div className="footer-column">
-                        <h4>About Us</h4>
-                        <ul>
-                            <li><a onClick={() => navigate('/aboutUs', { state: { order } })}>About</a></li>
-                        </ul>
-                    </div>
-                    <div className="footer-column">
-                        <h4>Contact Us</h4>
-                        <ul>
-                            <li><a onClick={() => navigate('/contact', { state: { order } })}>Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </footer>
-
+                    <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
+                    <button className='cart-btn'>Checkout</button>
+                </form>
+            </div>
         </div>
     
     )
