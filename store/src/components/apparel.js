@@ -1,17 +1,47 @@
-import React from 'react';
-import {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 import ShoppingCart from './shoppingCart';
 import '../stylesheets/footer.css';
 
 const Apparel = () => {
     // hard coded the order object
     const [order, setOrder] = useState({
-        buyQuantity: [0, 0, 0, 0, 0], credit_card_number: '', expir_date: '', cvvCode: '',
-        card_holder_name: '', address1: '', address2: '', city: '', state: '', zip: '', productImages: ['/product1.avif', '/product2.webp', '/product3.webp', '/product4.jpeg', '/product5.webp'], productPrices: [10.99, 20.99, 30.99, 40.99, 50.99]
+        buyQuantity: [0, 0, 0, 0, 0], 
+        credit_card_number: '', 
+        expir_date: '', 
+        cvvCode: '',
+        card_holder_name: '', 
+        address1: '', 
+        address2: '', city: '', 
+        state: '', 
+        zip: '', 
+        productImages: ['/product1.avif', '/product2.webp', '/product3.webp', '/product4.jpeg', '/product5.webp'], 
+        productPrices: [10.99, 20.99, 30.99, 40.99, 50.99]
+        // productImages: [], 
+        // productPrices: [] 
+
     })
     const navigate = useNavigate()
     const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        console.log('useEffect hook is running');
+        // invoke URL
+        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory' 
+        // Using axios to fetch data
+        axios.get(apiEndpoint) 
+            .then(response => {
+                const data = response.data
+                console.log(data)
+                // setOrder(prevOrder => ({
+                //     ...prevOrder,
+                //     productImages: data.productImages,
+                //     productPrices: data.productPrices
+                // }));
+            })
+            .catch(error => console.error('Error fetch data: ', error))
+    }, []) //The empty dependency array [] ensures that the effect runs only once.
 
     // runs when pay button is clicked
     // trasnfers the order object to the payment page
@@ -88,26 +118,26 @@ const Apparel = () => {
                         <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
                         <br />
                     </div>
-                ))}
+                ))} 
                 <ShoppingCart cart={cart} updateQuantity={updateQuantity} removeItem={removeItem}/>
                 <button className='btn'>Pay</button>
             </form>
 
             <footer>
-                <div class="footer-container">
-                    <div class="footer-column">
+                <div className="footer-container">
+                    <div className="footer-column">
                         <h4>Purchase Products</h4>
                         <ul>
                             <li><a onClick={() => navigate('/purchase', { state: { order } })}>Purchase</a></li>
                         </ul>
                     </div>
-                    <div class="footer-column">
+                    <div className="footer-column">
                         <h4>About Us</h4>
                         <ul>
                             <li><a onClick={() => navigate('/aboutUs', { state: { order } })}>About</a></li>
                         </ul>
                     </div>
-                    <div class="footer-column">
+                    <div className="footer-column">
                         <h4>Contact Us</h4>
                         <ul>
                             <li><a onClick={() => navigate('/contact', { state: { order } })}>Contact</a></li>
