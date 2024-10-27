@@ -6,6 +6,7 @@ const ViewOrder = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [order, setOrder] = useState(location.state?.order);
+    
 
     const confirm_Order = () => {
         navigate('/viewConfirmation', { state: { order } });

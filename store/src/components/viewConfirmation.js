@@ -1,5 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from 'react';
 import {useLocation} from "react-router-dom"
+import axios from 'axios'
 import '../stylesheets/viewConfirmation.css'
 import '../stylesheets/footer.css';
 
@@ -11,6 +12,20 @@ const ViewConfirmation = () => {
 
     const [order, setOrder] = useState(location.state?.order)
 
+    const conf_num = useState()
+
+    useEffect(() => {
+        // invoke URL
+        const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
+        // Using axios to fetch data
+        axios.get(apiEndpoint) 
+            .then(response => {
+                const data = response.data
+                conf_num = data["conf_num"]// Set the featured jerseys data
+            })
+            .catch(error => console.error('Error fetch data: ', error))
+    }, []) //The empty dependency array [] ensures that the effect runs only once.
+
     return (
         <div className="view-confirmation">
             <div className="view-confirmation-container">
@@ -18,7 +33,7 @@ const ViewConfirmation = () => {
                     Thank you for your purchase!
                 </h3>
                 <h4>
-                    Confirmation Number: 123456789
+                    Confirmation Number: {conf_num}
                 </h4>
                 <h4>
                     Order Summary <br />
