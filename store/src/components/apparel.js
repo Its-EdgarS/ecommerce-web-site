@@ -13,32 +13,24 @@ const Apparel = () => {
         cvvCode: '',
         card_holder_name: '', 
         address1: '', 
-        address2: '', city: '', 
+        address2: '', 
+        city: '', 
         state: '', 
         zip: '', 
-        productImages: ['/product1.avif', '/product2.webp', '/product3.webp', '/product4.jpeg', '/product5.webp'], 
-        productPrices: [10.99, 20.99, 30.99, 40.99, 50.99]
-        // productImages: [], 
-        // productPrices: [] 
-
+        items: [] 
     })
     const navigate = useNavigate()
     const [cart, setCart] = useState([]);
 
+    const [allApparel, setApparel] = useState([])
     useEffect(() => {
-        console.log('useEffect hook is running');
         // invoke URL
-        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory' 
+        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?category=apparel' 
         // Using axios to fetch data
         axios.get(apiEndpoint) 
             .then(response => {
                 const data = response.data
-                console.log(data)
-                // setOrder(prevOrder => ({
-                //     ...prevOrder,
-                //     productImages: data.productImages,
-                //     productPrices: data.productPrices
-                // }));
+                setApparel(data) // Set the featured jerseys data
             })
             .catch(error => console.error('Error fetch data: ', error))
     }, []) //The empty dependency array [] ensures that the effect runs only once.
@@ -112,12 +104,13 @@ const Apparel = () => {
             <div className='apparel-container'>
                 <form onSubmit={handleSubmit}>
                     <div className='product-grid'>
-                        {order.productImages.map((image, index) => (
+                    {allApparel.map((item, index) => (
                             <div className='product-item' key={index}>
-                                <label>Product {index + 1} - ${order.productPrices[index]}</label>
-                                <img src={image} alt={`Product ${index + 1}`} width="100" />
+                                <img src={item.image} alt={item.name} width="100" />
+                                <label>{item.description} - ${item.price}</label>
                                 <input
                                     type='number'
+                                    value={order.buyQuantity[index]}
                                     onChange={(e) => handleInputChange(index, e.target.value)}
                                 />
                                 <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>

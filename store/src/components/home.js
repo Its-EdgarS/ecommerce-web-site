@@ -1,8 +1,25 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import '../stylesheets/home.css'
+import axios from 'axios'
 
 const Home = () => {
+    const [featuredJerseys, setFeaturedJerseys] = useState([])
+
+    useEffect(() => {
+        // invoke URL
+        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?featured=True' 
+        // Using axios to fetch data
+        axios.get(apiEndpoint) 
+            .then(response => {
+                const data = response.data
+                setFeaturedJerseys(data) // Set the featured jerseys data
+            })
+            .catch(error => console.error('Error fetch data: ', error))
+    }, []) //The empty dependency array [] ensures that the effect runs only once.
+
+
+
     return (
         <div className="home-wrapper">
             <div className="home-banner">
@@ -19,29 +36,15 @@ const Home = () => {
                 </div>
 
                 <div className="featured-jerseys-products card-deck">
-                    <div className="product-card card">
-                        <img src="/product_images/Judkins_Jersey_Gray.webp" alt="Quinshon Judkins Jersey"></img>
-                        <div className="featured-jerseys-product-desc">
-                            <p className="">Ohio State Buckeyes Nike #1 Quinshon Judkins Student Athlete Gray Football Jersey</p>
-                            <p className="text-muted">$145.00</p>
+                    {featuredJerseys.map((jersey, index) => (
+                        <div key={index} className="product-card card">
+                            <img src={jersey.image} alt={jersey.name} />
+                            <div className="featured-jerseys-product-desc">
+                                <p>{jersey.description}</p>
+                                <p className="text-muted">${jersey.price}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="product-card card">
-                        <img src="/product_images/Egbuka_Jersey_Scarlet.webp" alt="Quinshon Judkins Jersey"></img>
-                        <div className="featured-jerseys-product-desc">
-                            <p className="">Ohio State Buckeyes Nike #2 Emeka Egbuka Student Athlete Scarlet Football Jersey
-                            </p>
-                            <p className="text-muted">$145.00</p>
-                        </div>
-                    </div>
-                    <div className="product-card card">
-                        <img src="/product_images/Smith_Jersey_White.webp" alt="Quinshon Judkins Jersey"></img>
-                        <div className="featured-jerseys-product-desc">
-                            <p className="">Ohio State Buckeyes Nike #4 Jeremiah Smith Student Athlete White Football Jersey
-                            </p>
-                            <p className="text-muted">$145.00</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
