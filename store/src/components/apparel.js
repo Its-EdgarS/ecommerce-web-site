@@ -35,9 +35,22 @@ const Apparel = () => {
             .catch(error => console.error('Error fetch data: ', error))
     }, []) //The empty dependency array [] ensures that the effect runs only once.
 
+
     // runs when pay button is clicked
     // trasnfers the order object to the payment page
     const handleSubmit = (e) => {
+        // invoke URL
+        const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
+        // Using axios to fetch data
+        axios.post(apiEndpoint, cart) 
+            .then(response => {
+                const data = response.data
+                const conf_num = data["body"]
+                console.log(conf_num);
+
+            })
+            .catch(error => console.error('Error fetch data: ', error))
+
         e.preventDefault()
         navigate('/checkout', { state: { order } })
     }
@@ -57,7 +70,7 @@ const Apparel = () => {
         }
     }
 
-    const addToCart = (index) => {
+    const addToCart = (index, item) => {
         const newCart = [...cart];
         const existingItemIndex = newCart.findIndex(item => item.index === index);
         if (existingItemIndex !== -1) {
@@ -65,8 +78,8 @@ const Apparel = () => {
         } else {
             newCart.push({
                 index,
-                image: order.productImages[index],
-                price: order.productPrices[index],
+                image: item.image[index],
+                price: item.price[index],
                 quantity: order.buyQuantity[index]
             });
         }
@@ -104,7 +117,7 @@ const Apparel = () => {
             <div className='apparel-container'>
                 <form onSubmit={handleSubmit}>
                     <div className='product-grid'>
-                    {allApparel.map((item, index) => (
+                        {allApparel.map((item, index) => (
                             <div className='product-item' key={index}>
                                 <img src={item.image} alt={item.name} width="100" />
                                 <label>{item.description} - ${item.price}</label>
@@ -113,7 +126,7 @@ const Apparel = () => {
                                     value={order.buyQuantity[index]}
                                     onChange={(e) => handleInputChange(index, e.target.value)}
                                 />
-                                <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
+                                <button type="button" onClick={() => addToCart(index, item)}>Add to Cart</button>
                                 <br />
                             </div>
                         ))}

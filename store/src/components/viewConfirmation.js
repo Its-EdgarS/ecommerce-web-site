@@ -12,16 +12,16 @@ const ViewConfirmation = () => {
 
     const [order, setOrder] = useState(location.state?.order)
 
-    const conf_num = useState()
+    const [conf_num, setConfNum] = useState('');
 
     useEffect(() => {
         // invoke URL
         const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
         // Using axios to fetch data
-        axios.get(apiEndpoint) 
+        axios.post(apiEndpoint) 
             .then(response => {
                 const data = response.data
-                conf_num = data["conf_num"]// Set the featured jerseys data
+                setConfNum(data.body);
             })
             .catch(error => console.error('Error fetch data: ', error))
     }, []) //The empty dependency array [] ensures that the effect runs only once.

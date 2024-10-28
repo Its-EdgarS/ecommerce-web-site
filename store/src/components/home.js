@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import '../stylesheets/home.css'
 import axios from 'axios'
+import ShoppingCart from "./shoppingCart"
 
 const Home = () => {
     const [featuredJerseys, setFeaturedJerseys] = useState([])
+
+    const conf_num = useState()
 
     useEffect(() => {
         // invoke URL
