@@ -17,7 +17,10 @@ const Apparel = () => {
         city: '', 
         state: '', 
         zip: '', 
-        items: [] 
+        items: [],
+        productImages: ['product_images/ohiostate_red_tshirt.avif', 'product_images/product2.webp', 'product_images/product3.webp', 'product_images/product4.jpeg', 'product_images/product5.webp'], 
+        productPrices: [10.99, 20.99, 30.99, 40.99, 50.99]
+
     })
     const navigate = useNavigate()
     const [cart, setCart] = useState([]);
@@ -104,13 +107,25 @@ const Apparel = () => {
             <div className='apparel-container'>
                 <form onSubmit={handleSubmit}>
                     <div className='product-grid'>
-                    {allApparel.map((item, index) => (
+                    {/* {allApparel.map((item, index) => (
                             <div className='product-item' key={index}>
                                 <img src={item.image} alt={item.name} width="100" />
                                 <label>{item.description} - ${item.price}</label>
                                 <input
                                     type='number'
                                     value={order.buyQuantity[index]}
+                                    onChange={(e) => handleInputChange(index, e.target.value)}
+                                />
+                                <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
+                                <br />
+                            </div>
+                        ))} */}
+                        {order.productImages.map((image, index) => (
+                            <div key={index}>
+                                <label>Product {index + 1} - ${order.productPrices[index]}</label>
+                                <img src={image} alt={`Product ${index + 1}`} width="100" />
+                                <input
+                                    type='number'
                                     onChange={(e) => handleInputChange(index, e.target.value)}
                                 />
                                 <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
