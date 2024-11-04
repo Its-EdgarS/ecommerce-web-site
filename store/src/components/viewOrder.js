@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from 'axios'
 import '../stylesheets/viewOrder.css';
 
 const ViewOrder = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [order, setOrder] = useState(location.state?.order);
+    const [id, setId] = useState(location.state?.id)
+    const [data, setData] = useState()
     
+    useEffect(() => {
+        // invoke URL
+        const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
+        // Using axios to fetch data
+        setId("30")
+        axios.get(apiEndpoint, "30") 
+            .then(response => {
+                data = response.data
+                console.log(data)
+                setData(data)
+            })
+            .catch(error => console.error('Error fetch data: ', error))
+    }, [])
 
     const confirm_Order = () => {
         navigate('/viewConfirmation', { state: { order } });
@@ -39,7 +55,7 @@ const ViewOrder = () => {
                 </div>
                 <div className="shipping-info">
                     <h3>Shipping Information</h3>
-                    <p>Address 1: {order.address1}</p>
+                    <p>Address 1: {id}</p>
                     <p>Address 2: {order.address2}</p>
                     <p>City: {order.city}</p>
                     <p>State: {order.state}</p>

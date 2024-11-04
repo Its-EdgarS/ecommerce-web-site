@@ -22,6 +22,7 @@ const Apparel = () => {
         productPrices: [10.99, 20.99, 30.99, 40.99, 50.99]
 
     })
+    const [id, setId] = useState()
     const navigate = useNavigate()
     const [cart, setCart] = useState([]);
 
@@ -41,8 +42,25 @@ const Apparel = () => {
     // runs when pay button is clicked
     // trasnfers the order object to the payment page
     const handleSubmit = (e) => {
+        // invoke URL
+        const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
+        // Using axios to fetch data
+        const payload = {
+            context: "CART",  // Separate context
+            id: id,
+            cart: cart        // The cart data
+        };
+        const data = -1;
+        axios.post(apiEndpoint, payload) 
+            .then(response => {
+                const data = response.data
+                setId(data['body'])
+                console.log(data['body'])
+            })
+            .catch(error => console.error('Error fetch data: ', error))
+
         e.preventDefault()
-        navigate('/checkout', { state: { order } })
+        navigate('/checkout', { state: { order, id: data['body'] }})
     }
 
     // runs when the user enters a quantity

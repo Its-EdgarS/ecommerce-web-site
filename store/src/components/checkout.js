@@ -1,15 +1,34 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 import "../stylesheets/checkout.css"; 
 
 const CheckoutPage = () => {
+
   const location = useLocation();
   const navigate = useNavigate();
+  console.log(location.state); // Check if state is being passed
+  const [id, setId] = useState(location.state?.id)
 
   const [order, setOrder] = useState(location.state?.order);
 
   const handleSubmit = (e) => {
+    // invoke URL
+    const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
+    // Using axios to fetch data
+    const payload = {
+        context: "INFO",  
+        id: "30",
+        order: order       
+    };
+    axios.post(apiEndpoint, payload) 
+        .then(response => {
+            const data = response.data
+
+        })
+        .catch(error => console.error('Error fetch data: ', error))
+
     e.preventDefault();
     navigate("/viewOrder", { state: { order } });
   };
@@ -25,7 +44,7 @@ const CheckoutPage = () => {
         <form onSubmit={handleSubmit}>
           <div className="checkout-section">
             <h2>Contact</h2>
-            <label>Email</label>
+            <label>{id}</label>
             <input
               type="email"
               name="email"
