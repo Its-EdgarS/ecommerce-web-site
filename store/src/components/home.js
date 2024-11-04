@@ -8,7 +8,7 @@ const Home = () => {
 
     useEffect(() => {
         // invoke URL
-        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?featured=True' 
+        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?featured=1' 
         // Using axios to fetch data
         axios.get(apiEndpoint) 
             .then(response => {
@@ -38,7 +38,7 @@ const Home = () => {
                 <div className="featured-jerseys-products card-deck">
                     {featuredJerseys.map((jersey, index) => (
                         <div key={index} className="product-card card">
-                            <img src={jersey.image} alt={jersey.name} />
+                            <img src={jersey.image_url} alt={jersey.name} />
                             <div className="featured-jerseys-product-desc">
                                 <p>{jersey.description}</p>
                                 <p className="text-muted">${jersey.price}</p>
