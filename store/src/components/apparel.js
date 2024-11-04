@@ -28,7 +28,7 @@ const Apparel = () => {
     const [allApparel, setApparel] = useState([])
     useEffect(() => {
         // invoke URL
-        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?category=apparel' 
+        const apiEndpoint = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?category_id=2' 
         // Using axios to fetch data
         axios.get(apiEndpoint) 
             .then(response => {
@@ -107,25 +107,13 @@ const Apparel = () => {
             <div className='apparel-container'>
                 <form onSubmit={handleSubmit}>
                     <div className='product-grid'>
-                    {/* {allApparel.map((item, index) => (
+                    {allApparel.map((item, index) => (
                             <div className='product-item' key={index}>
-                                <img src={item.image} alt={item.name} width="100" />
+                                <img src={item.image_url} alt={item.name} width="100" />
                                 <label>{item.description} - ${item.price}</label>
                                 <input
                                     type='number'
                                     value={order.buyQuantity[index]}
-                                    onChange={(e) => handleInputChange(index, e.target.value)}
-                                />
-                                <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
-                                <br />
-                            </div>
-                        ))} */}
-                        {order.productImages.map((image, index) => (
-                            <div key={index}>
-                                <label>Product {index + 1} - ${order.productPrices[index]}</label>
-                                <img src={image} alt={`Product ${index + 1}`} width="100" />
-                                <input
-                                    type='number'
                                     onChange={(e) => handleInputChange(index, e.target.value)}
                                 />
                                 <button type="button" onClick={() => addToCart(index)}>Add to Cart</button>
