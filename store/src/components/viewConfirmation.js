@@ -11,6 +11,7 @@ const ViewConfirmation = () => {
 
 
     const [order, setOrder] = useState(location.state?.order)
+    const [id, setId] = useState(location.state?.id)
 
     const conf_num = useState()
 
@@ -33,7 +34,7 @@ const ViewConfirmation = () => {
                     Thank you for your purchase!
                 </h3>
                 <h4>
-                    Confirmation Number: {conf_num}
+                    Confirmation Number: {id}
                 </h4>
                 <h4>
                     Order Summary <br />

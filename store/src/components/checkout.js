@@ -8,29 +8,28 @@ const CheckoutPage = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location.state); // Check if state is being passed
-  const [id, setId] = useState(location.state?.id)
+  const [id, setId] = useState()
 
   const [order, setOrder] = useState(location.state?.order);
+  
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     // invoke URL
     const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
     // Using axios to fetch data
     const payload = {
-        context: "INFO",  
-        id: "30",
         order: order       
     };
     axios.post(apiEndpoint, payload) 
         .then(response => {
             const data = response.data
-
+            
+            navigate("/viewOrder", { state: { order, id: data['body'] } });
         })
         .catch(error => console.error('Error fetch data: ', error))
 
-    e.preventDefault();
-    navigate("/viewOrder", { state: { order } });
+    
   };
 
   const handleInputChange = (e) => {

@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from 'axios'
+import axios from 'axios';
 import '../stylesheets/viewOrder.css';
 
 const ViewOrder = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const [order, setOrder] = useState(location.state?.order);
-    const [id, setId] = useState(location.state?.id)
-    const [data, setData] = useState()
+    const [data, setData] = useState(null);  // Set initial value to `null` to represent loading state
+    const [loading, setLoading] = useState(true);  // Track loading state
     
     useEffect(() => {
         // invoke URL
-        const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
-        // Using axios to fetch data
-        setId("30")
-        axios.get(apiEndpoint, "30") 
+        const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order';
+        
+        axios.get(apiEndpoint)
             .then(response => {
-                data = response.data
-                console.log(data)
-                setData(data)
+                setData(response.data); 
+                setLoading(false); 
             })
-            .catch(error => console.error('Error fetch data: ', error))
-    }, [])
+            .catch(error => {
+                console.error('Error fetching data: ', error);
+                setLoading(false); 
+            });
+    }, []);  
+    
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     const confirm_Order = () => {
-        navigate('/viewConfirmation', { state: { order } });
+        navigate('/viewConfirmation', { state: { order, id: data["order_id"] } });
     };
 
     const total_cost = () => {
@@ -55,17 +60,17 @@ const ViewOrder = () => {
                 </div>
                 <div className="shipping-info">
                     <h3>Shipping Information</h3>
-                    <p>Address 1: {id}</p>
-                    <p>Address 2: {order.address2}</p>
-                    <p>City: {order.city}</p>
-                    <p>State: {order.state}</p>
-                    <p>ZIP: {order.zip}</p>
+                    <p>Address 1: {data['address1']}</p>
+                    <p>Address 2: {data['address2']}</p>
+                    <p>City: {data['city']}</p>
+                    <p>State: {data['state']}</p>
+                    <p>ZIP: {data['zip']}</p>
                 </div>
                 <div className="card-info">
                     <h3>Card Information</h3>
-                    <p>Card Holder Name: {order.card_holder_name}</p>
-                    <p>Card Number: **** **** **** {order.credit_card_number.slice(-4)}</p>
-                    <p>Expiration Date: {order.expir_date}</p>
+                    <p>Card Holder Name: {data['name']}</p>
+                    <p>Card Number: **** **** **** {data['card_number'].slice(-4)}</p>
+                    <p>Expiration Date: {data['expir']}</p>
                 </div>
                 <div className="total-cost">
                     Total Cost: ${total_cost()}
