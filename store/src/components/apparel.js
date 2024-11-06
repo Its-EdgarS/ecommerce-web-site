@@ -47,13 +47,12 @@ const Apparel = () => {
         const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
         // Using axios to fetch data
         const payload = {
-            context: "checkout",
+            context: "apparel",
             order: order       
         };
         axios.post(apiEndpoint, payload) 
             .then(response => {
                 const data = response.data
-                console.log(order)
                 navigate("/checkout");
             })
             .catch(error => console.error('Error fetch data: ', error))

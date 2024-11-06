@@ -11,7 +11,6 @@ const CheckoutPage = () => {
   const [id, setId] = useState()
 
   const [order, setOrder] = useState();
-  console.log(order)
   
 
   const handleSubmit = (e) => {
@@ -26,7 +25,6 @@ const CheckoutPage = () => {
     axios.post(apiEndpoint, payload) 
         .then(response => {
             const data = response.data
-            
             navigate("/viewOrder");
         })
         .catch(error => console.error('Error fetch data: ', error))
