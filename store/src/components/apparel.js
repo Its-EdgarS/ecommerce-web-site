@@ -42,9 +42,24 @@ const Apparel = () => {
     // runs when pay button is clicked
     // trasnfers the order object to the payment page
     const handleSubmit = (e) => {
-        e.preventDefault()
-        navigate('/checkout', { state: { order }})
-    }
+        e.preventDefault();
+        // invoke URL
+        const apiEndpoint = 'https://41e3xst1h2.execute-api.us-east-2.amazonaws.com/dev/order-processing/order' 
+        // Using axios to fetch data
+        const payload = {
+            context: "checkout",
+            order: order       
+        };
+        axios.post(apiEndpoint, payload) 
+            .then(response => {
+                const data = response.data
+                console.log(order)
+                navigate("/checkout");
+            })
+            .catch(error => console.error('Error fetch data: ', error))
+    
+        
+      };
 
     // runs when the user enters a quantity
     const handleInputChange = (index, value) => {

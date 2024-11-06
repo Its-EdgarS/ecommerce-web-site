@@ -4,11 +4,10 @@ import axios from 'axios';
 import '../stylesheets/viewOrder.css';
 
 const ViewOrder = () => {
-    const location = useLocation();
     const navigate = useNavigate();
-    const [order, setOrder] = useState(location.state?.order);
-    const [data, setData] = useState(null);  // Set initial value to `null` to represent loading state
-    const [loading, setLoading] = useState(true);  // Track loading state
+    const [data, setData] = useState(null); 
+    const [loading, setLoading] = useState(true);  
+    
     
     useEffect(() => {
         // invoke URL
@@ -30,13 +29,13 @@ const ViewOrder = () => {
     }
 
     const confirm_Order = () => {
-        navigate('/viewConfirmation', { state: { order, id: data["order_id"] } });
+        navigate('/viewConfirmation');
     };
 
     const total_cost = () => {
         let total = 0;
         for (let i = 0; i < 5; i++) {
-            total += order.buyQuantity[i] * order.productPrices[i];
+            total += data.products[i][3] * data.products[i][4];
         }
         return Math.round(total * 100) / 100;
     };
@@ -47,16 +46,16 @@ const ViewOrder = () => {
                 <h3>Review Your Order</h3>
                 <h4>Order Summary</h4>
                 <div className="order-summary">
-                    {order.productImages.map((image, index) => (
-                        <div key={index} className="order-item">
-                            <img src={image} alt={`Product ${index + 1}`} width="100" />
-                            <div className="order-item-details">
-                                <p className="product-name">Product {index + 1}</p>
-                                <p className="product-quantity">Quantity: {order.buyQuantity[index]}</p>
-                                <p className="product-price">Price: ${order.productPrices[index]}</p>
-                            </div>
+                {data.products.map((product, index) => (
+                    <div key={index} className="order-item">
+                        <img src={product[5]} alt={`Product ${index + 1}`} width="100" />
+                        <div className="order-item-details">
+                        <p className="product-name">Product {index + 1}</p>
+                        <p className="product-quantity">Quantity: {product[3]}</p>
+                        <p className="product-price">Price: ${product[4]}</p>
                         </div>
-                    ))}
+                    </div>
+                ))}
                 </div>
                 <div className="shipping-info">
                     <h3>Shipping Information</h3>
