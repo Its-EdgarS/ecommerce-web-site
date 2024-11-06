@@ -54,8 +54,6 @@ def lambda_handler(event, context):
     }
 
 
-import json
-import mysql.connector
 
 import json
 import mysql.connector
