@@ -8,18 +8,7 @@ const Apparel = () => {
     // hard coded the order object
     const [order, setOrder] = useState({
         buyQuantity: [0, 0, 0, 0, 0], 
-        credit_card_number: '', 
-        expir_date: '', 
-        cvvCode: '',
-        card_holder_name: '', 
-        address1: '', 
-        address2: '', 
-        city: '', 
-        state: '', 
-        zip: '', 
         items: [],
-        productImages: ['product_images/ohiostate_red_tshirt.avif', 'product_images/product2.webp', 'product_images/product3.webp', 'product_images/product4.jpeg', 'product_images/product5.webp'], 
-        productPrices: [10.99, 20.99, 30.99, 40.99, 50.99]
 
     })
     const [id, setId] = useState()
@@ -34,6 +23,7 @@ const Apparel = () => {
         axios.get(apiEndpoint) 
             .then(response => {
                 const data = response.data
+                console.log(data)
                 setApparel(data) // Set the featured jerseys data
             })
             .catch(error => console.error('Error fetch data: ', error))
@@ -83,8 +73,8 @@ const Apparel = () => {
         } else {
             newCart.push({
                 index,
-                image: order.productImages[index],
-                price: order.productPrices[index],
+                image: allApparel[String(index)]['image_url'],
+                price: allApparel[String(index)]['price'],
                 quantity: order.buyQuantity[index]
             });
         }

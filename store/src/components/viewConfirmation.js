@@ -9,6 +9,7 @@ const ViewConfirmation = () => {
 
 
     const [data, setData] = useState(null); 
+    const [apparel, setApparel] = useState([]);
     const [loading, setLoading] = useState(true); 
 
 
@@ -25,6 +26,16 @@ const ViewConfirmation = () => {
                 console.error('Error fetching data: ', error);
                 setLoading(false); 
             });
+
+        const apiEndpoint2 = 'https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?category_id=2' 
+        // Using axios to fetch data
+        axios.get(apiEndpoint2) 
+            .then(response => {
+                const data = response.data
+                console.log(data)
+                setApparel(data) // Set the featured jerseys data
+            })
+            .catch(error => console.error('Error fetch data: ', error))
     }, []); 
 
     if (loading) {
@@ -46,13 +57,13 @@ const ViewConfirmation = () => {
                 <div className="order-summary">
                     {data.products.map((product, index) => (
                         <div key={index}  className="order-item">
-                            <img src={product[5]} alt={`Product ${index + 1}`} width="100" className="product-image" />
+                            <img src={apparel[String(index)]['image_url']} alt={`Product ${index + 1}`} width="100" className="product-image" />
                             <div className="order-item-details">
                                 <div className="product-info">
                                     <p className="product-name">Product {index + 1}</p>
                                     <p className="product-quantity">Quantity: {product[3]}</p>
                                 </div>
-                                <p className="product-price">Price: ${product[3] * product[4]}</p>
+                                <p className="product-price">Price: ${product[3] * apparel[String(index)]['price']}</p>
                             </div>
                         </div>
                     ))}
