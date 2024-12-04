@@ -2,6 +2,8 @@
   background-image: url('../../public/osu_background_small.webp');
   background-color: white;
   padding: 10px;
+  min-height: 100vh;
+
 }
 
 .view-confirmation-container {
@@ -11,6 +13,7 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .view-confirmation-container h2 {

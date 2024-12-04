@@ -49,10 +49,10 @@ const Home = () => {
             </div>
 
             <div className="shop-men-women-wrapper">
-                <Link to="/men">
+                <Link to="/apparel/men">
                     <img className="shop-men-women-promo" src="/home/shop_men_promo.png" alt="shop_men_promo" />
                 </Link>
-                <Link to="/women">
+                <Link to="/apparel/women">
                     <img className="shop-men-women-promo" src="/home/shop_women_promo.png" alt="shop_women_promo" />
                 </Link>
             </div>

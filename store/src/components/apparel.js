@@ -4,10 +4,10 @@ import axios from "axios";
 import ShoppingCart from "./shoppingCart";
 import "../stylesheets/apparel.css";
 
-const Apparel = ({categoryId}) => {
+const Apparel = ({filter}) => {
     // hard coded the order object
     const [order, setOrder] = useState({
-        buyQuantity: [0, 0, 0, 0, 0],
+        buyQuantity: [],
         items: [],
     });
     const [id, setId] = useState();
@@ -18,7 +18,7 @@ const Apparel = ({categoryId}) => {
     useEffect(() => {
         // invoke URL
         const apiEndpoint =
-            `https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?category_id=${categoryId}`;
+            `https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?${filter}`;
         // Using axios to fetch data
         axios
             .get(apiEndpoint)
@@ -28,7 +28,7 @@ const Apparel = ({categoryId}) => {
                 setApparel(data); // Set the featured jerseys data
             })
             .catch((error) => console.error("Error fetch data: ", error));
-    }, [categoryId]); //The empty dependency array [] ensures that the effect runs only once.
+    }, [filter]); //The empty dependency array [] ensures that the effect runs only once.
 
     // runs when pay button is clicked
     // trasnfers the order object to the payment page
@@ -73,6 +73,7 @@ const Apparel = ({categoryId}) => {
                     image: allApparel[String(index)]["image_url"],
                     price: allApparel[String(index)]["price"],
                     quantity: order.buyQuantity[index],
+                    description: allApparel[String(index)]["description"],
                 });
             }
             setCart(newCart);
@@ -103,7 +104,7 @@ const Apparel = ({categoryId}) => {
     return (
         <div>
             <div className="apparel-banner">
-                <h2>All Apparel</h2>
+                <h2>Shop</h2>
                 <p>Enter the quantity of products you want to buy</p>
             </div>
             <div className="apparel-container">

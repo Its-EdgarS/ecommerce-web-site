@@ -47,7 +47,7 @@ const ViewOrder = () => {
 
     const total_cost = () => {
         let total = 0;
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < data.products.length; i++) {
             total += data.products[i][3] * apparel[String(i)]['price'];
         }
         return Math.round(total * 100) / 100;
@@ -82,7 +82,7 @@ const ViewOrder = () => {
                     <h3>Card Information</h3>
                     <p>Card Holder Name: {data['name']}</p>
                     <p>Card Number: **** **** **** {data['card_number'].slice(-4)}</p>
-                    <p>Expiration Date: {data['expir']}</p>
+                    <p>Expiration Date: {data['expir_date']}</p>
                 </div>
                 <div className="total-cost">
                     Total Cost: ${total_cost()}

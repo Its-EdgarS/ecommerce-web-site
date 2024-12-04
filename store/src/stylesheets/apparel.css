@@ -24,6 +24,8 @@
     background-image: url('../../public/osu_background_small.webp');
     background-color: white;
     padding: 10px;
+    min-height: 100vh;
+    margin-bottom: 60px;
 }
 
 .product-grid {

@@ -14,7 +14,7 @@ const ShoppingCart = ({cart, updateQuantity, removeItem}) => {
                 cart.map((item, index) => (
                     <div key={index}>
                         <img src={item.image} alt={`Product ${index + 1}`} width="100" />
-                        <p>Product {index + 1} - ${item.price}</p>
+                        <p>{item.description} - ${item.price}</p>
                         <input
                             type='number'
                             value={item.quantity}

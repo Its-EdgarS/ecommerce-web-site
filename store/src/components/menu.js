@@ -18,8 +18,14 @@ function Menu() {
                         <Link className="nav-link" to="/apparel/jerseys">Jerseys</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/accessories">Accessories</Link>
+                        <Link className="nav-link" to="/apparel/men">Men</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/apparel/women">Women</Link>
+                    </li>
+                    {/* <li className="nav-item">
+                        <Link className="nav-link" to="/accessories">Accessories</Link>
+                    </li> */}
                 </ul>
             </div>
 
