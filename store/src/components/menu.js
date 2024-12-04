@@ -15,7 +15,7 @@ function Menu() {
                         <Link className="nav-link" to="/apparel">Apparel</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/jerseys">Jerseys</Link>
+                        <Link className="nav-link" to="/apparel/jerseys">Jerseys</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/accessories">Accessories</Link>

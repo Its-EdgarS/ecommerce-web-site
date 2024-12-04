@@ -4,7 +4,7 @@ import axios from "axios";
 import ShoppingCart from "./shoppingCart";
 import "../stylesheets/apparel.css";
 
-const Apparel = () => {
+const Apparel = ({categoryId}) => {
     // hard coded the order object
     const [order, setOrder] = useState({
         buyQuantity: [0, 0, 0, 0, 0],
@@ -18,7 +18,7 @@ const Apparel = () => {
     useEffect(() => {
         // invoke URL
         const apiEndpoint =
-            "https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?category_id=2";
+            `https://f69ur8oz4a.execute-api.us-east-1.amazonaws.com/dev/inventory-management/inventory/items?category_id=${categoryId}`;
         // Using axios to fetch data
         axios
             .get(apiEndpoint)
@@ -28,7 +28,7 @@ const Apparel = () => {
                 setApparel(data); // Set the featured jerseys data
             })
             .catch((error) => console.error("Error fetch data: ", error));
-    }, []); //The empty dependency array [] ensures that the effect runs only once.
+    }, [categoryId]); //The empty dependency array [] ensures that the effect runs only once.
 
     // runs when pay button is clicked
     // trasnfers the order object to the payment page
